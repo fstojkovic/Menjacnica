@@ -16,7 +16,11 @@ public class Valuta {
 	}
 
 	public void setNaziv(String naziv) {
-		this.naziv = naziv;
+		if (naziv == null || naziv.isEmpty()) {
+			System.out.println("Greska u nazivu.");
+		} else {
+			this.naziv = naziv;
+		}
 	}
 
 	public String getSkraceniNaziv() {
@@ -24,7 +28,11 @@ public class Valuta {
 	}
 
 	public void setSkraceniNaziv(String skraceniNaziv) {
-		this.skraceniNaziv = skraceniNaziv;
+		if (skraceniNaziv == null || skraceniNaziv.isEmpty()) {
+			System.out.println("Greska u skracenom nazivu.");
+		} else {
+			this.skraceniNaziv = skraceniNaziv;
+		}
 	}
 
 	public GregorianCalendar getDatum() {
@@ -32,15 +40,24 @@ public class Valuta {
 	}
 
 	public void setDatum(GregorianCalendar datum) {
-		this.datum = datum;
+		if (datum == null) {
+			System.out.println("Datum ne sme biti null.");
+		} else {
+			this.datum = datum;
+		}
 	}
 
 	public double getProdajniKurs() {
+
 		return prodajniKurs;
 	}
 
 	public void setProdajniKurs(double prodajniKurs) {
-		this.prodajniKurs = prodajniKurs;
+		if (prodajniKurs <= 0) {
+			System.out.println("Prodajni kurs ne sme biti manji od 0.");
+		} else {
+			this.prodajniKurs = prodajniKurs;
+		}
 	}
 
 	public double getKupovniKurs() {
@@ -48,7 +65,11 @@ public class Valuta {
 	}
 
 	public void setKupovniKurs(double kupovniKurs) {
-		this.kupovniKurs = kupovniKurs;
+		if (kupovniKurs <= 0) {
+			System.out.println("Kupovni kurs ne sme biti manji od 0.");
+		} else {
+			this.kupovniKurs = kupovniKurs;
+		}
 	}
 
 	public double getSrednjiKurs() {
@@ -56,7 +77,11 @@ public class Valuta {
 	}
 
 	public void setSrednjiKurs(double srednjiKurs) {
-		this.srednjiKurs = srednjiKurs;
+		if (srednjiKurs <= 0) {
+			System.out.println("Srednji kurs ne sme biti manji od 0.");
+		} else {
+			this.srednjiKurs = srednjiKurs;
+		}
 	}
 
 	@Override
@@ -70,32 +95,22 @@ public class Valuta {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Valuta other = (Valuta) obj;
-		if (naziv == null) {
-			if (other.naziv != null)
-				return false;
-		} else if (!naziv.equals(other.naziv))
-			return false;
-		if (skraceniNaziv == null) {
-			if (other.skraceniNaziv != null)
-				return false;
-		} else if (!skraceniNaziv.equals(other.skraceniNaziv))
-			return false;
-		return true;
+		if (obj != null && obj instanceof Valuta) {
+			Valuta v = (Valuta) obj;
+			if (naziv.equals(v.getNaziv()) && skraceniNaziv.equals(v.getSkraceniNaziv())
+					&& (datum.compareTo(v.getDatum()) == 0)) {
+				return true;
+			}
+
+		}
+		return false;
 	}
 
 	@Override
 	public String toString() {
-		return "Valuta [naziv=" + naziv + ", skraceniNaziv=" + skraceniNaziv + ", datum=" + datum.getTime() + ", prodajniKurs="
-				+ prodajniKurs + ", kupovniKurs=" + kupovniKurs + ", srednjiKurs=" + srednjiKurs + "]";
+		return "Valuta [naziv=" + naziv + ", skraceniNaziv=" + skraceniNaziv + ", datum=" + datum.getTime()
+				+ ", prodajniKurs=" + prodajniKurs + ", kupovniKurs=" + kupovniKurs + ", srednjiKurs=" + srednjiKurs
+				+ "]";
 	}
-	
-	
 
 }
