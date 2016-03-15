@@ -53,7 +53,7 @@ public class Valuta {
 	}
 
 	public void setProdajniKurs(double prodajniKurs) {
-		if (prodajniKurs <= 0) {
+		if (prodajniKurs < 0) {
 			System.out.println("Prodajni kurs ne sme biti manji od 0.");
 		} else {
 			this.prodajniKurs = prodajniKurs;
@@ -65,7 +65,7 @@ public class Valuta {
 	}
 
 	public void setKupovniKurs(double kupovniKurs) {
-		if (kupovniKurs <= 0) {
+		if (kupovniKurs < 0) {
 			System.out.println("Kupovni kurs ne sme biti manji od 0.");
 		} else {
 			this.kupovniKurs = kupovniKurs;
@@ -77,7 +77,7 @@ public class Valuta {
 	}
 
 	public void setSrednjiKurs(double srednjiKurs) {
-		if (srednjiKurs <= 0) {
+		if (srednjiKurs < 0) {
 			System.out.println("Srednji kurs ne sme biti manji od 0.");
 		} else {
 			this.srednjiKurs = srednjiKurs;
