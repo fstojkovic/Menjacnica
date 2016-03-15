@@ -20,9 +20,18 @@ public class Menjacnica implements MenjacnicaInterfejs {
 		v.setKupovniKurs(kupovniKurs);
 		v.setProdajniKurs(prodajniKurs);
 		v.setSrednjiKurs(srednjiKurs);
-		if (valuta.contains(v)) {
-			System.out.println("U LISTI SE VEC NALAZI ISTI ELEMENT.");
-		} else {
+		boolean unos = false;
+		for (int i = 0; i < valuta.size(); i++) {
+
+			if (valuta.get(i).equals(v)) {
+				valuta.get(i).setKupovniKurs(kupovniKurs);
+				valuta.get(i).setProdajniKurs(prodajniKurs);
+				valuta.get(i).setSrednjiKurs(srednjiKurs);
+				unos = true;
+				break;
+			}
+		}
+		if (!unos) {
 			valuta.add(v);
 		}
 	}

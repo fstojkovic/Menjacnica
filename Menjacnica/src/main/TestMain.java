@@ -21,11 +21,10 @@ public class TestMain {
 		datum2.set(2016, 5, 24);
 		m.dodajKurs(datum2, "Dolar", "USD", 105, 103, 100);
 
-		GregorianCalendar datum3 = new GregorianCalendar();
-		datum3.set(2016, 5, 24);
-		m.dodajKurs(datum3, "Dolar", "USD", 105, 103, 100);
+			
+		m.dodajKurs(datum2, "Dolar", "USD", 108, 180, 109);
 		//m.obrisiKurs(datum1, "Euro", "EUR");
-		//m.prikazi();
+		m.prikazi();
 
 		m.vratiKurs(datum2, "Dolar", "USD");
 	}
